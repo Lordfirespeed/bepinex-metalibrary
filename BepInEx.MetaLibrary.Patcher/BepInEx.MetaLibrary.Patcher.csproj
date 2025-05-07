@@ -22,8 +22,4 @@
         </Reference>
     </ItemGroup>
 
-    <Target Name="HooHa" AfterTargets="PostBuildEvent">
-        <Message Importance="high" Text="@(LibraryPath->'&quot;%(Identity)&quot;', ';')"/>
-    </Target>
-
 </Project>
