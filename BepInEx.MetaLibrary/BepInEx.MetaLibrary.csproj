@@ -1,0 +1,46 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <AssemblyName>dev.lordfirespeed.metalibrary</AssemblyName>
+        <RootNamespace>MetaLibrary</RootNamespace>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <Id>Lordfirespeed.BepInEx.MetaLibrary</Id>
+        <PackageId>Lordfirespeed.BepInEx.MetaLibrary</PackageId>
+
+        <Product>MetaLibrary</Product>
+        <Description></Description>
+        <IsPackable>true</IsPackable>
+    </PropertyGroup>
+
+    <!-- Development dependencies -->
+    <ItemGroup>
+        <PackageReference Include="BepInEx.Analyzers" PrivateAssets="all" />
+        <PackageReference Include="PolySharp" PrivateAssets="all" />
+    </ItemGroup>
+
+    <!-- Runtime assembly references -->
+    <ItemGroup>
+        <PackageReference Include="UnityEngine.Modules" IncludeAssets="compile" PrivateAssets="all" />
+        <PackageReference Include="BepInEx.Core" IncludeAssets="compile" PrivateAssets="all" />
+        <PackageReference Include="Lordfirespeed.Bus" />
+        <PackageReference Include="Serilog" />
+        <PackageReference Include="Serilog.Sinks.BepInEx" />
+    </ItemGroup>
+
+    <Target Name="IncludePatcher" BeforeTargets="AfterBuild">
+        <MSBuild
+            Projects="$(ProjectDir)..\BepInEx.MetaLibrary.Patcher\BepInEx.MetaLibrary.Patcher.csproj"
+            BuildInParallel="$(BuildInParallel)"
+            Targets="Build"
+        >
+            <Output TaskParameter="TargetOutputs" ItemName="PatcherBuildOutputs" />
+        </MSBuild>
+
+        <Message Importance="high" Text="omgomg: @(PatcherBuildOutputs)" />
+    </Target>
+
+    <Import Project="$(ProjectDir)GenerateProductInfo.targets" />
+</Project>

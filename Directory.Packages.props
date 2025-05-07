@@ -1,0 +1,33 @@
+<Project>
+
+    <PropertyGroup>
+        <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+        <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+        <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
+    </PropertyGroup>
+
+    <!-- Development dependencies -->
+    <ItemGroup>
+        <PackageVersion Include="MinVer" Version="[4.*, 5.0.0)" />
+        <PackageVersion Include="PolySharp" Version="[1.*, 2.0.0)" />
+        <PackageVersion Include="BepInEx.Analyzers" Version="[1.*, 2.0.0)" />
+        <PackageVersion Include="BepInEx.AssemblyPublicizer.MSBuild" Version="[0.4.*, 0.5.0)" />
+        <PackageVersion Include="JetBrains.Annotations" Version="[2024.*, 2025.0.0)" />
+    </ItemGroup>
+
+    <!-- Runtime dependencies -->
+    <ItemGroup>
+        <PackageVersion Include="UnityEngine.Modules" Version="2022.3.21" />
+        <PackageVersion Include="BepInEx.Core" Version="[5.*, 6.0.0)" />
+        <PackageVersion Include="Lordfirespeed.Bus" Version="[0.1.*, 0.2.0)" />
+        <!-- Serilog + pinned transitive dependencies -->
+        <PackageVersion Include="Serilog" Version="[4.*, 5.0.0)" />
+        <PackageVersion Include="System.Diagnostics.DiagnosticSource" Version="[8.*, 9.0.0)" />
+        <PackageVersion Include="System.Threading.Channels" Version="[8.*, 9.0.0)" />
+        <PackageVersion Include="System.Memory" Version="[4.*, 5.0.0)" />
+        <PackageVersion Include="System.Runtime.CompilerServices.Unsafe" Version="[6.*, 7.0.0)" />
+        <!-- End Serilog -->
+        <PackageVersion Include="Serilog.Sinks.BepInEx" Version="[0.5.*, 0.6.0)" />
+    </ItemGroup>
+
+</Project>

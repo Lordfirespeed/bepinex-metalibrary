@@ -1,0 +1,51 @@
+<Project>
+
+    <!-- Compiler/MSBuild switches -->
+    <PropertyGroup>
+        <NeutralLanguage>en-GB</NeutralLanguage>
+        <LangVersion>latest</LangVersion>
+        <Nullable>enable</Nullable>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <NoWarn>$(NoWarn);1701;1702;0436</NoWarn>
+        <DebugType>embedded</DebugType>
+    </PropertyGroup>
+
+    <!-- Target flags -->
+    <PropertyGroup>
+        <ClearCopyLocalPaths>true</ClearCopyLocalPaths>
+    </PropertyGroup>
+
+    <!-- Metadata -->
+    <PropertyGroup>
+        <Authors>Lordfirespeed</Authors>
+        <IsPackable>false</IsPackable>
+        <PackageProjectUrl>https://github.com/Lordfirespeed/bus</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Lordfirespeed/bus</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="$(ProjectDir)../README.md" Pack="true" PackagePath="/"/>
+        <None Include="$(ProjectDir)../LICENSE" Pack="true" PackagePath="/"/>
+    </ItemGroup>
+
+    <!-- MinVer -->
+    <PropertyGroup>
+        <MinVerDefaultPreReleaseIdentifiers>dev</MinVerDefaultPreReleaseIdentifiers>
+        <MinVerTagPrefix>v</MinVerTagPrefix>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="MinVer">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <!-- Release optimisations -->
+    <PropertyGroup Condition="$(Configuration) == 'Release'">
+        <Optimize>true</Optimize>
+    </PropertyGroup>
+
+</Project>
