@@ -10,11 +10,6 @@
         <DebugType>embedded</DebugType>
     </PropertyGroup>
 
-    <!-- Target flags -->
-    <PropertyGroup>
-        <ClearCopyLocalPaths>true</ClearCopyLocalPaths>
-    </PropertyGroup>
-
     <!-- Metadata -->
     <PropertyGroup>
         <Authors>Lordfirespeed</Authors>
