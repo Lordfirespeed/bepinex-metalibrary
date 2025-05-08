@@ -12,7 +12,6 @@
         <PackageId>Lordfirespeed.BepInEx.MetaLibrary</PackageId>
 
         <Product>MetaLibrary</Product>
-        <Description>Library for making libraries within the BepInEx plugin framework. It's a meta-library, if you will.</Description>
         <IsPackable>true</IsPackable>
     </PropertyGroup>
 

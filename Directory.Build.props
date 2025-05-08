@@ -15,6 +15,7 @@
     <PropertyGroup>
         <Authors>Lordfirespeed</Authors>
         <IsPackable>false</IsPackable>
+        <Description>Library for making libraries within the BepInEx plugin framework. It's a meta-library, if you will.</Description>
         <PackageProjectUrl>https://github.com/Lordfirespeed/bepinex-metalibrary</PackageProjectUrl>
         <RepositoryUrl>https://github.com/Lordfirespeed/bepinex-metalibrary</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
