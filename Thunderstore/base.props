@@ -19,9 +19,41 @@
         <PreThunderstoreGenTargetName Include="AddAssemblyCopyPaths" />
     </ItemGroup>
 
-    <!-- todo -->
+    <ItemGroup>
+        <ProjectReference Include="$(MSBuildThisFileDirectory)../BepInEx.MetaLibrary/BepInEx.MetaLibrary.csproj" />
+        <ProjectReference Include="$(MSBuildThisFileDirectory)../BepInEx.MetaLibrary.Patcher/BepInEx.MetaLibrary.Patcher.csproj" />
+    </ItemGroup>
+
     <Target Name="AddAssemblyCopyPaths">
-        
+        <ItemGroup>
+            <IncludeProjectReferencedAssemblyInThunderstorePackage 
+                Include="dev.lordfirespeed.metalibrary"
+                Destination="BepInEx/core/MetaLibrary/" 
+            />
+            <IncludeProjectReferencedAssemblyInThunderstorePackage 
+                Include="dev.lordfirespeed.metalibrary.patcher" 
+                Destination="BepInEx/patchers/MetaLibrary/" 
+            />
+        </ItemGroup>
+
+        <!-- ProjectReference assemblies -->
+        <JoinItems
+            Left="@(ReferencePath)"
+            LeftKey="FileName"
+            LeftMetadata="*"
+            Right="@(IncludeProjectReferencedAssemblyInThunderstorePackage)"
+            RightMetadata="Destination"
+            RightKey="Identity"
+            ItemSpecToUse="Left"
+        >
+            <Output TaskParameter="JoinResult" ItemName="IncludeAssemblyPathInThunderstorePackage" />
+        </JoinItems>
+
+        <Message Importance="high" Text="Resolved: @(IncludeAssemblyPathInThunderstorePackage->'&quot;%(Identity)&quot;', ';&#10;')"/>
+
+        <ItemGroup>
+            <ThunderstoreBuildCopyPath Include="@(IncludeAssemblyPathInThunderstorePackage)" Destination="%(Destination)" />
+        </ItemGroup>
     </Target>
 
 </Project>
