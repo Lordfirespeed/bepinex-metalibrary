@@ -6,7 +6,7 @@
         <IsThunderstorePackable>true</IsThunderstorePackable>
         <ThunderstoreNamespace>Lordfirespeed</ThunderstoreNamespace>
         <ThunderstoreName>BepInEx.MetaLibrary</ThunderstoreName>
-        <ThunderstoreDescription>Library for making libraries within the BepInEx plugin framework. It's a meta-library, if you will.</ThunderstoreDescription>
+        <ThunderstoreDescription>$(Description)</ThunderstoreDescription>
         <ThunderstoreIconPath>$(MSBuildThisFileDirectory)assets/icons/icon.png</ThunderstoreIconPath>
     </PropertyGroup>
 
@@ -26,13 +26,13 @@
 
     <Target Name="AddAssemblyCopyPaths">
         <ItemGroup>
-            <IncludeProjectReferencedAssemblyInThunderstorePackage 
+            <IncludeProjectReferencedAssemblyInThunderstorePackage
                 Include="dev.lordfirespeed.metalibrary"
-                Destination="BepInEx/core/MetaLibrary/" 
+                Destination="BepInEx/core/MetaLibrary/"
             />
-            <IncludeProjectReferencedAssemblyInThunderstorePackage 
-                Include="dev.lordfirespeed.metalibrary.patcher" 
-                Destination="BepInEx/patchers/MetaLibrary/" 
+            <IncludeProjectReferencedAssemblyInThunderstorePackage
+                Include="dev.lordfirespeed.metalibrary.patcher"
+                Destination="BepInEx/patchers/MetaLibrary/"
             />
         </ItemGroup>
 
