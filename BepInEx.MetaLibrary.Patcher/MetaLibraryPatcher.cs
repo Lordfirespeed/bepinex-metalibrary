@@ -14,6 +14,7 @@ using BepInEx.Preloader;
 using JetBrains.Annotations;
 using Mono.Cecil;
 using Mono.Cecil.Cil;
+using static System.Reflection.Assembly;
 
 namespace MetaLibrary.Patcher;
 
@@ -22,14 +23,36 @@ public static class MetaLibraryPatcher
 {
     private const string MetaLibraryAssemblyName = "dev.lordfirespeed.metalibrary.dll";
 
-    private static readonly IEnumerable<string> MetaLibraryAssemblySearchPaths = [
-        Path.Combine(Paths.BepInExAssemblyDirectory, "Lordfirespeed-BepInEx_MetaLibrary", "MetaLibrary"),
+    private static string ThisAssemblyPath {
+        get {
+            var path = GetExecutingAssembly().Location;
+            // check for UNC path: https://stackoverflow.com/a/18907418/11045433
+            if (path.StartsWith(new string(Path.DirectorySeparatorChar, 2)))
+                throw new InvalidOperationException("Patcher plugin location should be a local filepath, not UNC");
+            return path;
+        }
+    }
+
+    private static IList<string> MetaLibraryRelativePathParts {
+        get {
+            var relativePath = Path.GetRelativePath(Paths.PatcherPluginPath, ThisAssemblyPath);
+            if (relativePath == ThisAssemblyPath)
+                throw new InvalidOperationException("Patcher plugin should be in the BepInEx patcher plugins directory");
+            var relativePathParts = relativePath.Split(Path.DirectorySeparatorChar).ToList();
+            relativePathParts.RemoveAt(relativePathParts.Count - 1);
+            return relativePathParts;
+        }
+    }
+
+    private static IEnumerable<string> MetaLibraryAssemblySearchPath => [
+        // can't hardcode the package identifier because it varies: e.g. Lordfirecompany-B..., LordfireREPO-B...
+        Path.Combine([Paths.BepInExAssemblyDirectory, ..MetaLibraryRelativePathParts]),
         Path.Combine(Paths.BepInExAssemblyDirectory, "MetaLibrary"),
         Paths.BepInExAssemblyDirectory,
     ];
 
     private static string? _metaLibraryAssemblyPath;
-    private static string? MetaLibraryAssemblyPath => _metaLibraryAssemblyPath ??= MetaLibraryAssemblySearchPaths
+    private static string? MetaLibraryAssemblyPath => _metaLibraryAssemblyPath ??= MetaLibraryAssemblySearchPath
         .Select(directoryPath => Path.Combine(directoryPath, MetaLibraryAssemblyName))
         .FirstOrDefault(File.Exists);
 
