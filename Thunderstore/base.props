@@ -6,7 +6,7 @@
         <IsThunderstorePackable>true</IsThunderstorePackable>
         <ThunderstoreNamespace>Lordfirespeed</ThunderstoreNamespace>
         <ThunderstoreName>BepInEx.MetaLibrary</ThunderstoreName>
-        <ThunderstoreDescription>wee</ThunderstoreDescription>
+        <ThunderstoreDescription>Library for making libraries within the BepInEx plugin framework. It's a meta-library, if you will.</ThunderstoreDescription>
         <ThunderstoreIconPath>$(MSBuildThisFileDirectory)assets/icons/icon.png</ThunderstoreIconPath>
     </PropertyGroup>
 
