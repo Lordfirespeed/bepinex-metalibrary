@@ -23,8 +23,8 @@ public static class MetaLibraryPatcher
     private const string MetaLibraryAssemblyName = "dev.lordfirespeed.metalibrary.dll";
 
     private static readonly IEnumerable<string> MetaLibraryAssemblySearchPaths = [
-        Path.Combine(Paths.BepInExAssemblyDirectory, "Lordfirespeed-BepInEx_MetaLibrary", "MetaLibrary.Patcher"),
-        Path.Combine(Paths.BepInExAssemblyDirectory, "MetaLibrary.Patcher"),
+        Path.Combine(Paths.BepInExAssemblyDirectory, "Lordfirespeed-BepInEx_MetaLibrary", "MetaLibrary"),
+        Path.Combine(Paths.BepInExAssemblyDirectory, "MetaLibrary"),
         Paths.BepInExAssemblyDirectory,
     ];
 

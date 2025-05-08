@@ -1,0 +1,27 @@
+﻿<Project>
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <ThunderstoreNamespace>UNSET</ThunderstoreNamespace>
+        <IsThunderstorePackable>true</IsThunderstorePackable>
+        <ThunderstoreNamespace>Lordfirespeed</ThunderstoreNamespace>
+        <ThunderstoreName>BepInEx.MetaLibrary</ThunderstoreName>
+        <ThunderstoreDescription>wee</ThunderstoreDescription>
+        <ThunderstoreIconPath>$(MSBuildThisFileDirectory)assets/icons/icon.png</ThunderstoreIconPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ThunderstoreBuildCopyPath Include="$(MSBuildThisFileDirectory)../LICENSE" Destination="/"/>
+        <ThunderstoreDependency Include="BepInEx-BepInExPack" Version="5.4.2100" Reference="false" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PreThunderstoreGenTargetName Include="AddAssemblyCopyPaths" />
+    </ItemGroup>
+
+    <!-- todo -->
+    <Target Name="AddAssemblyCopyPaths">
+        
+    </Target>
+
+</Project>

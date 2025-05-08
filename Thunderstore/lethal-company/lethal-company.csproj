@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="$(MSBuildThisFileDirectory)../base.props" />
+
+    <PropertyGroup>
+        <ThunderstoreNamespace>Lordfirecompany</ThunderstoreNamespace>
+        <ThunderstoreAuthToken>$(LETHAL_COMPANY_THUNDERSTORE_API_TOKEN)</ThunderstoreAuthToken>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ThunderstorePublishCommunity Include="lethal-company" CategorySlugs="libraries"/>
+        <ThunderstoreDependency Include="Sigurd_REPO-Serilog_Pack" Version="0.5.2" />
+    </ItemGroup>
+
+</Project>

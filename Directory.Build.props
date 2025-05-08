@@ -1,4 +1,5 @@
 <Project>
+    <Import Project="Sdk.props" Sdk="Sigurd.Thunderstore.Sdk" />
 
     <!-- Compiler/MSBuild switches -->
     <PropertyGroup>
@@ -14,11 +15,18 @@
     <PropertyGroup>
         <Authors>Lordfirespeed</Authors>
         <IsPackable>false</IsPackable>
-        <PackageProjectUrl>https://github.com/Lordfirespeed/bus</PackageProjectUrl>
-        <RepositoryUrl>https://github.com/Lordfirespeed/bus</RepositoryUrl>
+        <PackageProjectUrl>https://github.com/Lordfirespeed/bepinex-metalibrary</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Lordfirespeed/bepinex-metalibrary</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
+    </PropertyGroup>
+
+    <!-- Thunderstore metadata -->
+    <PropertyGroup>
+        <IsThunderstorePackable>false</IsThunderstorePackable>
+        <ThunderstoreWebsiteUrl>$(RepositoryUrl)</ThunderstoreWebsiteUrl>
+        <ThunderstoreReadmePath>$(MSBuildThisFileDirectory)README.md</ThunderstoreReadmePath>
     </PropertyGroup>
 
     <ItemGroup>
@@ -36,11 +44,15 @@
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
             <PrivateAssets>all</PrivateAssets>
         </PackageReference>
+        <SetThunderstorePackageVersionTargetName Include="SetVersion" />
     </ItemGroup>
 
     <!-- Release optimisations -->
     <PropertyGroup Condition="$(Configuration) == 'Release'">
         <Optimize>true</Optimize>
     </PropertyGroup>
+
+    <!-- Import local user props -->
+    <Import Project="$(SolutionDir)bepinex-metalibrary.props.user" Condition="Exists('$(SolutionDir)bepinex-metalibrary.props.user')"/>
 
 </Project>

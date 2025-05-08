@@ -1,8 +1,10 @@
 <Project>
+    <Import Project="Sdk.targets" Sdk="Sigurd.Thunderstore.Sdk" />
 
     <Target Name="SetVersion" AfterTargets="MinVer" DependsOnTargets="MinVer">
         <PropertyGroup>
             <PlainVersion>$(MinVerMajor).$(MinVerMinor).$(MinVerPatch)</PlainVersion>
+            <ThunderstorePackageVersion>$(PlainVersion)</ThunderstorePackageVersion>
         </PropertyGroup>
     </Target>
 

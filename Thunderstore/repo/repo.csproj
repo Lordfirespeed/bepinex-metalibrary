@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Import Project="$(MSBuildThisFileDirectory)../base.props" />
+
+    <PropertyGroup>
+        <ThunderstoreNamespace>LordfireREPO</ThunderstoreNamespace>
+        <ThunderstoreAuthToken>$(REPO_THUNDERSTORE_API_TOKEN)</ThunderstoreAuthToken>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ThunderstorePublishCommunity Include="repo" CategorySlugs="libraries"/>
+        <ThunderstoreDependency Include="Sigurd-Serilog_Pack" Version="0.5.2" />
+    </ItemGroup>
+
+</Project>

@@ -4,6 +4,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BepInEx.MetaLibrary", "BepI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BepInEx.MetaLibrary.Patcher", "BepInEx.MetaLibrary.Patcher\BepInEx.MetaLibrary.Patcher.csproj", "{88C40E54-07E2-4905-AFBF-6DCEDE8D6CE2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "repo", "Thunderstore\repo\repo.csproj", "{2CF384E2-CC13-403C-8DF0-4B8330B7DD6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "lethal-company", "Thunderstore\lethal-company\lethal-company.csproj", "{E9686740-957C-4CB8-8249-C871D71BD742}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +22,13 @@ Global
 		{88C40E54-07E2-4905-AFBF-6DCEDE8D6CE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88C40E54-07E2-4905-AFBF-6DCEDE8D6CE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88C40E54-07E2-4905-AFBF-6DCEDE8D6CE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CF384E2-CC13-403C-8DF0-4B8330B7DD6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CF384E2-CC13-403C-8DF0-4B8330B7DD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CF384E2-CC13-403C-8DF0-4B8330B7DD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CF384E2-CC13-403C-8DF0-4B8330B7DD6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E9686740-957C-4CB8-8249-C871D71BD742}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E9686740-957C-4CB8-8249-C871D71BD742}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E9686740-957C-4CB8-8249-C871D71BD742}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E9686740-957C-4CB8-8249-C871D71BD742}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

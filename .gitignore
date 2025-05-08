@@ -41,6 +41,11 @@
 /BepInEx.MetaLibrary*/[Oo]bj
 /BepInEx.MetaLibrary*/[Dd]ist
 
+### Thunderstore Build Projects
+!/Thunderstore
+/Thunderstore/*/[Bb]in
+/Thunderstore/*/[Oo]bj
+
 # Explicit exceptions/ignores
 **.user
 **.local
