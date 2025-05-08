@@ -31,17 +31,5 @@
         <PackageReference Include="Serilog.Sinks.BepInEx" />
     </ItemGroup>
 
-    <Target Name="IncludePatcher" BeforeTargets="AfterBuild">
-        <MSBuild
-            Projects="$(ProjectDir)..\BepInEx.MetaLibrary.Patcher\BepInEx.MetaLibrary.Patcher.csproj"
-            BuildInParallel="$(BuildInParallel)"
-            Targets="Build"
-        >
-            <Output TaskParameter="TargetOutputs" ItemName="PatcherBuildOutputs" />
-        </MSBuild>
-
-        <Message Importance="high" Text="omgomg: @(PatcherBuildOutputs)" />
-    </Target>
-
     <Import Project="$(ProjectDir)GenerateProductInfo.targets" />
 </Project>
