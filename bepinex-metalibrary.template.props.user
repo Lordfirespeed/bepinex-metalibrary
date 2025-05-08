@@ -1,0 +1,9 @@
+<Project>
+    <PropertyGroup>
+        <TestProfileDir>$(AppData)/r2modmanPlus-local/REPO/profiles/Test MetaLibrary/</TestProfileDir>
+        <!-- for Linux:
+        <TestProfileDir>$(HOME)/.config/r2modmanPlus-local/REPO/profiles/Test MetaLibrary</TestProfileDir>
+        -->
+        <ShouldCopyToTestProfile Condition="'$(MSBuildProjectName)' == 'repo'">false</ShouldCopyToTestProfile>
+    </PropertyGroup>
+</Project>
