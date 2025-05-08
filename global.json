@@ -3,5 +3,9 @@
     "version": "9.0.104",
     "rollForward": "latestMajor",
     "allowPrerelease": true
+  },
+  "msbuild-sdks": {
+    "Microsoft.Build.NoTargets": "3.7.56",
+    "Sigurd.Thunderstore.Sdk": "0.4.0"
   }
 }
