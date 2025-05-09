@@ -23,7 +23,7 @@ public class ResourceName: IEquatable<ResourceName>, IComparable<ResourceName>
     private static void AssertValidNamespace(string @namespace, string path)
     {
         if (IsValidNamespace(@namespace)) return;
-        throw new ResourceNameException($"Non [a-z0-9_.-] character in namespace of name: {Render(@namespace, path)}");
+        throw new ResourceNameException($"Non [a-z0-9_-] character in namespace of name: {Render(@namespace, path)}");
     }
 
     /// <summary>
