@@ -4,7 +4,6 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <ThunderstoreNamespace>UNSET</ThunderstoreNamespace>
         <IsThunderstorePackable>true</IsThunderstorePackable>
-        <ThunderstoreNamespace>Lordfirespeed</ThunderstoreNamespace>
         <ThunderstoreName>BepInEx.MetaLibrary</ThunderstoreName>
         <ThunderstoreDescription>$(Description)</ThunderstoreDescription>
         <ThunderstoreIconPath>$(MSBuildThisFileDirectory)assets/icons/icon.png</ThunderstoreIconPath>
