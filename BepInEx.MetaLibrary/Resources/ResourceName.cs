@@ -16,7 +16,7 @@ public class ResourceName: IEquatable<ResourceName>, IComparable<ResourceName>
     /// <summary>
     /// The default namespace, used when none is provided.
     /// </summary>
-    public const string DefaultNamespace = "lethal_company";
+    public const string DefaultNamespace = "unknown";
 
     private static string Render(string @namespace, string path) => @namespace + NamespaceSeparator + path;
 
