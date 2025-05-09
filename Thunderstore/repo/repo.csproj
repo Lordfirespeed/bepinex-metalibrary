@@ -11,6 +11,7 @@
         <ThunderstorePublishCommunity Include="repo" CategorySlugs="libraries"/>
         <ThunderstoreDependency Include="Sigurd-Serilog_Pack" Version="0.5.2" />
         <ThunderstoreDependency Include="dotnet_repo-Lordfirespeed_Bus" Version="0.1.0" />
+        <ThunderstoreDependency Include="LordfireREPO-Unity_Runtime_will_Comply" Version="0.1.0" />
     </ItemGroup>
 
 </Project>

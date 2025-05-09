@@ -11,6 +11,7 @@
         <ThunderstorePublishCommunity Include="lethal-company" CategorySlugs="libraries"/>
         <ThunderstoreDependency Include="Sigurd_REPO-Serilog_Pack" Version="0.5.2" />
         <ThunderstoreDependency Include="dotnet_lethal_company-Lordfirespeed_Bus" Version="0.1.0" />
+        <ThunderstoreDependency Include="Lordfirecompany-Unity_Runtime_will_Comply" Version="0.1.0" />
     </ItemGroup>
 
 </Project>
