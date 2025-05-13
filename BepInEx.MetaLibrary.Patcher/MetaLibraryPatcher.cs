@@ -119,8 +119,7 @@ public static class MetaLibraryPatcher
 
             var ins = il.Body.Instructions.First();
 
-            il.InsertBefore(ins,
-                il.Create(OpCodes.Call, startMethod));
+            il.InsertBefore(ins, il.Create(OpCodes.Call, startMethod));
         }
     }
 }
