@@ -27,5 +27,20 @@ internal static class Entrypoint
         catch (Exception exc) {
             Logger.Fatal(exc, "Failed to patch {MethodName}", nameof(Chainloader.Start));
         }
+
+        ConfigureAutomaticEventBusSubscriber();
+    }
+
+    static void ConfigureAutomaticEventBusSubscriber()
+    {
+        var autoSubscriber = new AutomaticEventBusSubscriber(Logger);
+
+        ChainloaderHooks.Plugin.OnPostLoad += (_, args) => {
+            autoSubscriber.Inject(args.PluginContainer, Side.Client);
+        };
+
+        ChainloaderHooks.OnComplete += (_, args) => {
+            autoSubscriber.WarnOfIgnoredSubscribers();
+        };
     }
 }
