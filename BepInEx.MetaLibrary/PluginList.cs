@@ -7,6 +7,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using BepInEx;
 using MetaLibrary.Collections.Generic;
@@ -119,6 +120,16 @@ public class PluginList
         return _containerByGuid[guid];
     }
 
+    public bool TryGetPluginContainerByGuid(string guid, [NotNullWhen(true)] out PluginContainer? container)
+    {
+        if (guid is null)
+            throw new ArgumentNullException(nameof(guid));
+        if (_infoById is null)
+            throw new InvalidOperationException($"Must assign {nameof(OrderedPluginInfos)} before trying to get plugin containers");
+
+        return _containerByGuid.TryGetValue(guid, out container);
+    }
+
     public PluginContainer GetPluginContainerById(int id)
     {
         if (_infoById is null)
@@ -126,6 +137,20 @@ public class PluginList
 
         var info = _infoById[id];
         return _containerByGuid[info.Metadata.GUID];
+    }
+
+    public bool TryGetPluginContainerById(int id, [NotNullWhen(true)] out PluginContainer? container)
+    {
+        if (_infoById is null)
+            throw new InvalidOperationException($"Must assign {nameof(OrderedPluginInfos)} before trying to get plugin containers");
+
+        var infoSuccess = _infoById.TryGetValue(id, out var info);
+        if (!infoSuccess) {
+            container = null;
+            return false;
+        }
+        container = _containerByGuid[info.Metadata.GUID];
+        return true;
     }
 
     public IEnumerable<PluginContainer> PluginContainersInOrder {
