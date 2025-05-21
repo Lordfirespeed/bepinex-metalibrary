@@ -16,7 +16,7 @@ namespace MetaLibrary;
 /// </summary>
 public class PluginLoadingContext
 {
-    private static Type BasePluginType = typeof(BaseUnityPlugin);
+    private static readonly Type BasePluginType = typeof(BaseUnityPlugin);
 
     private static readonly ThreadLocal<PluginLoadingContext> Context = new(() => new PluginLoadingContext());
 
