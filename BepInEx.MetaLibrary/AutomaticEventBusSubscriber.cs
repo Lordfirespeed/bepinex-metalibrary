@@ -9,12 +9,11 @@ using Bus.Api;
 using HarmonyLib;
 using MetaLibrary.Collections.Generic;
 using Serilog;
-using static MetaLibrary.MetaPlugin;
 
 namespace MetaLibrary;
 
 /// <summary>
-/// Automatic <see cref="EventBus"/> subscriber. Reads <see cref="MetaPlugin.EventBusSubscriberAttribute"/>
+/// Automatic <see cref="EventBus"/> subscriber. Reads <see cref="EventBusSubscriberAttribute"/>
 /// annotations and passes the annotated types to the <see cref="Bus"/> defined by the annotation, which
 /// defaults to <c>SigurdLib.EventBus</c>.
 /// </summary>
