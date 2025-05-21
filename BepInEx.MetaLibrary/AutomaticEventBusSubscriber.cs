@@ -14,8 +14,7 @@ namespace MetaLibrary;
 
 /// <summary>
 /// Automatic <see cref="EventBus"/> subscriber. Reads <see cref="EventBusSubscriberAttribute"/>
-/// annotations and passes the annotated types to the <see cref="Bus"/> defined by the annotation, which
-/// defaults to <c>SigurdLib.EventBus</c>.
+/// annotations and passes the annotated types to the <see cref="Bus"/> defined by the annotation.
 /// </summary>
 internal class AutomaticEventBusSubscriber(ILogger logger)
 {
@@ -35,11 +34,18 @@ internal class AutomaticEventBusSubscriber(ILogger logger)
             if (!subscriberAttribute.Side.HasFlag(context)) continue;
 
             try {
-                logger.Debug("Auto-subscribing {SubscriberType} to {Bus}", registerType, subscriberAttribute.EventBusIdentifier);
-                GetBus(subscriberAttribute.EventBusIdentifier).Register(registerType);
+                logger.Debug("Auto-subscribing {SubscriberType} to {Bus}", registerType, subscriberAttribute._Bus);
+
+                var busIdentifier = subscriberAttribute._Bus;
+                var bus = busIdentifier switch {
+                    EventBusSubscriberAttribute.Bus.Game => MetaLibrary.EventBus,
+                    EventBusSubscriberAttribute.Bus.Mod => plugin.EventBus,
+                    _ => throw new ArgumentOutOfRangeException(nameof(busIdentifier), $"Unrecognised Bus value: {busIdentifier}")
+                };
+                bus.Register(registerType);
             }
             catch (Exception exc) {
-                throw new InvalidOperationException($"Failed to auto-subscribe {registerType} to {subscriberAttribute.EventBusIdentifier}", exc);
+                throw new InvalidOperationException($"Failed to auto-subscribe {registerType} to {subscriberAttribute._Bus}", exc);
             }
         }
     }
@@ -80,6 +86,4 @@ internal class AutomaticEventBusSubscriber(ILogger logger)
             );
         }
     }
-
-    private static IEventBus GetBus(string busIdentifier) => Bindings.LookupBus(busIdentifier);
 }
