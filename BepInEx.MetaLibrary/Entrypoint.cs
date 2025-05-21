@@ -2,6 +2,7 @@ using System;
 using BepInEx.Bootstrap;
 using HarmonyLib;
 using JetBrains.Annotations;
+using MetaLibrary.Event.Lifecycle;
 using MetaLibrary.Extensions;
 using Serilog;
 
@@ -37,6 +38,7 @@ internal static class Entrypoint
 
         ChainloaderHooks.Plugin.OnPostLoad += (_, args) => {
             autoSubscriber.Inject(args.PluginContainer, Side.Client);
+            args.PluginContainer.AcceptEvent(new MetaLibraryConstructPluginEvent { Container = args.PluginContainer });
         };
 
         ChainloaderHooks.OnComplete += (_, args) => {
