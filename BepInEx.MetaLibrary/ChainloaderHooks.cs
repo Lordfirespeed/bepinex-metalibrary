@@ -31,7 +31,7 @@ internal static class ChainloaderHooks
     {
         public required IDictionary<string, PluginInfo> PluginsByGuid { get; init; }
         public required IList<string> OrderedPluginGuids { get; init; }
-    };
+    }
 
     public class CompleteEventArgs : EventArgs;
 
