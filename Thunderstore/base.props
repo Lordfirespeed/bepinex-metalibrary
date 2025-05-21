@@ -6,7 +6,7 @@
         <IsThunderstorePackable>true</IsThunderstorePackable>
         <ThunderstoreName>BepInEx.MetaLibrary</ThunderstoreName>
         <ThunderstoreDescription>$(Description)</ThunderstoreDescription>
-        <ThunderstoreIconPath>$(MSBuildThisFileDirectory)assets/icons/icon.png</ThunderstoreIconPath>
+        <ThunderstoreIconPath>$(MSBuildThisFileDirectory)assets/icons/in-deep.png</ThunderstoreIconPath>
     </PropertyGroup>
 
     <ItemGroup>
