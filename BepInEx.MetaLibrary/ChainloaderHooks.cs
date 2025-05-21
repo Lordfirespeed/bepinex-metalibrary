@@ -11,6 +11,7 @@ using System.Reflection;
 using BepInEx;
 using BepInEx.Bootstrap;
 using HarmonyLib;
+using JetBrains.Annotations;
 using Mono.Cecil;
 using Mono.Cecil.Rocks;
 using MonoMod.Cil;
@@ -164,6 +165,7 @@ internal static class ChainloaderHooks
     static class ChainloaderStartPatches
     {
         [HarmonyILManipulator]
+        [UsedImplicitly]
         public static void Manipulate(ILContext ilContext, MethodBase original, ILLabel retLabel)
         {
             var cursor = new ILCursor(ilContext);
