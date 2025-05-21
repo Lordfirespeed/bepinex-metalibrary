@@ -5,9 +5,9 @@ using System.Linq;
 using System.Reflection;
 using BepInEx.Bootstrap;
 using Bus;
-using Bus.Api;
 using HarmonyLib;
 using MetaLibrary.Collections.Generic;
+using MetaLibrary.Common;
 using Serilog;
 
 namespace MetaLibrary;
@@ -34,18 +34,18 @@ internal class AutomaticEventBusSubscriber(ILogger logger)
             if (!subscriberAttribute.Side.HasFlag(context)) continue;
 
             try {
-                logger.Debug("Auto-subscribing {SubscriberType} to {Bus}", registerType, subscriberAttribute._Bus);
+                logger.Debug("Auto-subscribing {SubscriberType} to {Bus}", registerType, subscriberAttribute.Bus);
 
-                var busIdentifier = subscriberAttribute._Bus;
+                var busIdentifier = subscriberAttribute.Bus;
                 var bus = busIdentifier switch {
-                    EventBusSubscriberAttribute.Bus.Game => MetaLibrary.EventBus,
-                    EventBusSubscriberAttribute.Bus.Mod => plugin.EventBus,
+                    EventBusSubscriber.Bus.Game => MetaLibrary.EventBus,
+                    EventBusSubscriber.Bus.Mod => plugin.EventBus,
                     _ => throw new ArgumentOutOfRangeException(nameof(busIdentifier), $"Unrecognised Bus value: {busIdentifier}")
                 };
                 bus.Register(registerType);
             }
             catch (Exception exc) {
-                throw new InvalidOperationException($"Failed to auto-subscribe {registerType} to {subscriberAttribute._Bus}", exc);
+                throw new InvalidOperationException($"Failed to auto-subscribe {registerType} to {subscriberAttribute.Bus}", exc);
             }
         }
     }
