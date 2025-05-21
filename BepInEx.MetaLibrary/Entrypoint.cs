@@ -43,6 +43,14 @@ internal static class Entrypoint
 
         ChainloaderHooks.OnComplete += (_, args) => {
             autoSubscriber.WarnOfIgnoredSubscribers();
+
+            // run init task: registry initialisation, including registry event dispatch to all mod buses (not parallel but IN ORDER)
+            // start the game event bus
+
+            // dispatch MetaLibrarySetupEvent to all mod buses (parallel)
+            // run init task: registration events (?)
+
+            // dispatch MetaLibraryLoadCompleteEvent to all mod buses (parallel)
         };
     }
 }
