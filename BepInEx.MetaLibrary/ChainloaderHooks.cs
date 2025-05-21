@@ -127,7 +127,7 @@ internal static class ChainloaderHooks
         }
 
         if (exceptions.Count > 0) {
-            throw new AggregateException($"SigurdLib {phase} failed due to potentially multiple exceptions", exceptions);
+            throw new AggregateException($"MetaLibrary {phase} failed due to potentially multiple exceptions", exceptions);
         }
 
         Logger.Write(level, "Completed {Phase}", phase);
