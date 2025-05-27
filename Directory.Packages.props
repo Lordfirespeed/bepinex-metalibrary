@@ -13,6 +13,13 @@
         <!-- https://learn.microsoft.com/en-us/nuget/concepts/dependency-resolution#lowest-applicable-version -->
         <!-- allow 'floating' versions; without them, NuGet chooses the 'lowest applicable' version -->
         <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
+
+        <!-- https://devblogs.microsoft.com/dotnet/enable-repeatable-package-restores-using-a-lock-file/ -->
+        <!-- enable project package lockfiles to mitigate non-deterministic behaviour introduced by floating versions -->
+        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+
+        <!-- enable locked restore mode in CI -->
+        <RestoreLockedMode Condition="'$(CI)' == 'true'">true</RestoreLockedMode>
     </PropertyGroup>
 
     <!-- Development dependencies -->
