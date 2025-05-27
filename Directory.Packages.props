@@ -1,8 +1,17 @@
 <Project>
 
     <PropertyGroup>
+        <!-- https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management#enabling-central-package-management -->
+        <!-- enable CPM: specify solution package versions here, not spread across the repository -->
         <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+
+        <!-- https://learn.microsoft.com/en-us/nuget/consume-packages/central-package-management#transitive-pinning -->
+        <!-- allow transitive dependencies' versions to be overridden, provided the override is a suitable version -->
         <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+
+        <!-- https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1011 -->
+        <!-- https://learn.microsoft.com/en-us/nuget/concepts/dependency-resolution#lowest-applicable-version -->
+        <!-- allow 'floating' versions; without them, NuGet chooses the 'lowest applicable' version -->
         <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
     </PropertyGroup>
 
